@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import TouchBar from './components/TouchBar.vue'
+import TapBar from './components/TapBar.vue'
 </script>
 
 <template>
@@ -8,7 +8,7 @@ import TouchBar from './components/TouchBar.vue'
   </main>
 
   <!-- Nav -->
-  <TouchBar />
+  <TapBar />
 </template>
 
 <style scoped>
