@@ -35,7 +35,6 @@
 	}
 	:global(svg) {
 		height: 100%;
-		font-size: 1rem;
 	}
 	:global(.tab-link[aria-current="page"]) {
 		color: var(--background);

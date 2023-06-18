@@ -3,6 +3,8 @@
 	import TabBar from "./lib/TabBar.svelte";
 	export let url = "";
 
+	import APIKeyModal from "./lib/APIKeyModal.svelte";
+
 	// Pages
 	import Home from "./pages/Home.svelte";
 	import Lines from "./pages/Lines.svelte";
@@ -13,6 +15,8 @@
 		<Route path="lines" component={Lines} />
 		<Route path="/"><Home /></Route>
 	</main>
+
+	<APIKeyModal />
 
 	<TabBar />
 </Router>
