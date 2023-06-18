@@ -3,7 +3,7 @@
 
 	let modalOpen = false;
 	function setModalVisibility() {
-		Preferences.get({ key: "APIkey" }).then((res) => {
+		Preferences.get({ key: "key" }).then((res) => {
 			modalOpen = !Boolean(res.value);
 		});
 	}
