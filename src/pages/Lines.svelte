@@ -1,29 +1,51 @@
-<script>
+<script lang="ts">
 	import { CapacitorHttp } from "@capacitor/core";
 	import getEndpointUrl from "../config/endpoints";
 	import { link } from "svelte-routing";
 
-	let lines = [];
+	type Lines = {
+		id: string;
+		name: string;
+		shortName: string;
+		bgXmlColor: string;
+		transportMode: {
+			name: string;
+			[more: string]: string;
+		};
+		[more: string]: string | { [more: string]: string };
+	}[];
 
-	getEndpointUrl("lines").then((url) => {
-		if (!url) return;
-		CapacitorHttp.get({ url }).then((response) => {
-			lines = response.data.lines.line;
-		});
-	});
+	async function getLines(): Promise<Lines> {
+		const url = await getEndpointUrl("lines");
+		if (!url) throw "Endpoint unknown";
+
+		const response = await CapacitorHttp.get({ url });
+		if (response.status != 200 || !response.data.lines?.line) throw "Invalid response";
+
+		return response.data.lines.line;
+	}
+
+	const getter = getLines();
 </script>
 
-<h1>Lines</h1>
-<ul>
-	{#each lines as line}
-		<a href="lines/{line.shortName.toLowerCase()}" use:link>
-			<li style="--line-color: {line.bgXmlColor}">
-				<span class="line__shortName">{line.shortName}</span>
-				<span class="line__destinations">{line.name}</span>
-			</li>
-		</a>
-	{/each}
-</ul>
+<h1>Lignes</h1>
+
+{#await getter}
+	Chargement...
+{:then lines}
+	<ul>
+		{#each lines as line}
+			<a href="lines/{line.shortName.toLowerCase()}" use:link>
+				<li style="--line-color: {line.bgXmlColor}">
+					<span class="line__shortName">{line.shortName}</span>
+					<span class="line__destinations">{line.name}</span>
+				</li>
+			</a>
+		{/each}
+	</ul>
+{:catch error}
+	Une erreur est survenue: {error}
+{/await}
 
 <style lang="scss">
 	ul {

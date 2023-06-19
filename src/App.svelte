@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { App } from "@capacitor/app";
-	import { Router, Route, Link } from "svelte-routing";
+	import { Router, Route } from "svelte-routing";
 	import TabBar from "./lib/TabBar.svelte";
 	export let url = "";
 
