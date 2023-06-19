@@ -26,9 +26,24 @@
 	});
 </script>
 
-<h1>{details.shortName}</h1>
+<h1>{details?.transportMode?.name} {details.shortName}</h1>
 <ul>
 	{#each stops as stop}
 		<li>{stop.name}</li>
 	{/each}
 </ul>
+
+<style>
+	h1 {
+		text-transform: capitalize;
+	}
+	ul {
+		list-style-type: none;
+	}
+	li {
+		padding: 0.5rem;
+	}
+	li:not(:last-of-type) {
+		border-bottom: 1px solid var(--on-background-dark);
+	}
+</style>

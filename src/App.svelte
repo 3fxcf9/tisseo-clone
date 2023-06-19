@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { App } from "@capacitor/app";
 	import { Router, Route, Link } from "svelte-routing";
 	import TabBar from "./lib/TabBar.svelte";
 	export let url = "";
@@ -9,6 +10,10 @@
 	import Home from "./pages/Home.svelte";
 	import Lines from "./pages/Lines.svelte";
 	import LineDetails from "./pages/LineDetails.svelte";
+
+	App.addListener("backButton", (ev) => {
+		window.history.back();
+	});
 </script>
 
 <Router {url}>
