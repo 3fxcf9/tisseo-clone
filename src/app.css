@@ -9,6 +9,7 @@
 :root {
 	--background: #232324;
 	--on-background: rgba(255, 255, 255, 0.87);
+	--on-background-dark: rgba(255, 255, 255, 0.243);
 	--primary: #646cff;
 	--primary-dark: #535bf2;
 
@@ -51,6 +52,7 @@ body {
 h1 {
 	font-size: 3.2em;
 	line-height: 1.1;
+	margin-bottom: 2rem;
 }
 
 #app {
