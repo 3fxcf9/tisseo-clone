@@ -23,6 +23,7 @@
 		display: flex;
 		align-items: stretch;
 		justify-content: space-around;
+		box-shadow: 0 0 10px 8px var(--background);
 	}
 	:global(a) {
 		font-size: 1rem;
