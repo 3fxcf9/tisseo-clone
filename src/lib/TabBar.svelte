@@ -7,15 +7,15 @@
 </script>
 
 <nav>
-	<Link class="tab-link" to="/">
+	<Link to="/" class="tab-link">
 		<HomeIcon />
 	</Link>
-	<Link class="tab-link" to="lines">
+	<Link to="lines" class="tab-link">
 		<LinesIcon />
 	</Link>
 </nav>
 
-<style>
+<style lang="scss">
 	nav {
 		border-top: 1px solid var(--on-background);
 		height: 4.5rem;
@@ -25,7 +25,7 @@
 		justify-content: space-around;
 		box-shadow: 0 0 10px 8px var(--background);
 	}
-	:global(a) {
+	:global(.tab-link) {
 		font-size: 1rem;
 		color: var(--on-background);
 		flex: 1;
@@ -33,22 +33,23 @@
 		align-items: center;
 		justify-content: center;
 		position: relative;
-	}
-	:global(svg) {
-		height: 100%;
+
+		:global(svg) {
+			height: 100%;
+		}
 	}
 	:global(.tab-link[aria-current="page"]) {
 		color: var(--background);
-	}
-	:global(.tab-link[aria-current="page"]):hover {
-		color: var(--background);
-	}
-	:global(.tab-link[aria-current="page"])::after {
-		content: "";
-		position: absolute;
-		background-color: var(--on-background);
-		padding: 1rem 2rem;
-		border-radius: 1rem;
-		z-index: -1;
+		&:hover {
+			color: var(--background);
+		}
+		&::after {
+			content: "";
+			position: absolute;
+			background-color: var(--on-background);
+			padding: 1rem 2rem;
+			border-radius: 1rem;
+			z-index: -1;
+		}
 	}
 </style>
